@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        menu.findItem(R.id.people).setVisible(false);
+        menu.findItem(R.id.search).setVisible(false);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -68,14 +68,13 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     }
 
     private void setIcon(){
-        int icons[] = {R.drawable.ic_chat_white_24dp, R.drawable.ic_people_white_24dp};
+        int icons[] = {R.drawable.ic_people_white_24dp , R.drawable.ic_chat_white_24dp};
 
         for (int x=0; x<tabLayout.getTabCount(); x++) {
             tabLayout.getTabAt(x).setIcon(icons[x]);
         }
 
     }
-
 
 
     // ===== implement ==== //
@@ -87,11 +86,13 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
 
         if(tab.getPosition()==0){
-            search.setVisible(true);
-            people.setVisible(false);
-        }else{
+            getSupportActionBar().setTitle("Friends");
             search.setVisible(false);
             people.setVisible(true);
+        }else{
+            getSupportActionBar().setTitle("Lines");
+            search.setVisible(true);
+            people.setVisible(false);
         }
 
     }
